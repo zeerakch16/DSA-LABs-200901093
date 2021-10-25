@@ -1,4 +1,4 @@
- # Queue Implementation using Numpy
+                                                     # Queue Implementation using Numpy
 import numpy as np
 
 class queue:
@@ -30,3 +30,36 @@ q.enqueue(10)
 print(q.dequeue())
 print(q.dequeue())
 print(q.dequeue())
+
+
+
+                                                           #with collections
+from collections import deque
+class Queue:
+  def __init__(self):
+    self.queue=deque([9,3,9,1,7,8])
+    def enqueue(self,val):
+     x=deque.append(self.queue,val)
+     return x
+  def dequeue(self):
+    b=deque.pop(self.queue,1)
+    return b
+ 
+  def front(self):
+    return self.queue[0]
+  def enqueueleft(self):
+    c=deque.appendleft(self.queue,val)
+    return v
+  def dequeueright(self):
+    d=deque.popleft(self.queue)
+    return d
+  def rear(self):
+    return self.queue[-1] 
+
+def self():
+  q=Queue()
+  q.enqueue(20)
+  q.enqueue(30)
+  print(q)
+  q.deque()
+  print(q)
