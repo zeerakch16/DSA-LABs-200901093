@@ -1,0 +1,244 @@
+Q 1 :
+
+ans :The value returned to the stack is 9
+
+Q 2 :
+
+Ans: The current size of stack is 18
+
+#Q 3
+class Empty(Exception):
+    pass
+
+class Stack():
+    def __init__(self):
+        self._data = []
+         
+    def __len__(self):
+        return len(self._data)
+    
+    def is_empty(self):
+        return len(self._data) == 0
+    
+    def push(self, value):
+        self._data.append(value)
+    
+    def top(self):
+        return self._data[-1]
+    
+    def pop(self):
+        if self.is_empty():
+            raise Empty('List is empty')
+        return self._data.pop()
+    
+    def full_pop(self):
+        ans = []
+        while not self.is_empty():
+            ans.append(self.pop())
+        return ans
+    
+def transfer(S, T):
+    while not S.is_empty():
+        T.push(S.pop())
+
+
+
+S,T = Stack(), Stack()
+
+try: S.pop()
+except Exception as e: print (e)
+
+for i in range(10):
+    S.push(i)
+    
+print('Top of S is: ', S.top())
+transfer(S, T)  
+print('Top of T is: ', T.top())
+S.full_pop(), T.full_pop()
+
+#Q4
+def remove_all(stack):
+	def helper(stack,stack_size):
+		if len(stack) == 0:
+			return stack
+		stack.pop()
+		if stack is None:
+			stack = ArrayStack()
+			return stack
+		return helper(stack, len(stack))
+	stack = helper(stack,len(stack))
+	return stack
+  
+  # Q 5 
+
+def reverse_list(l):
+   st = []
+   for a in l:
+       st.append(a)
+   l = []
+   while len(st)>0 :
+       l.append(st.pop())
+   return l
+q = reverse_list([1,2,3])
+print(q)
+
+#Q 7
+
+enqueue(5), queue is [5]
+enqueue(3), queue is [5, 3]
+dequeue(),  queue is [3]
+enqueue(2), queue is [3, 2]
+enqueue(8), queue is [3, 2, 8]
+dequeue(), queue is [2, 8]
+dequeue(), queue is [8]
+enqueue(9), queue is [8, 9]
+enqueue(1), queue is [8, 9, 1]
+dequeue(), queue is [9, 1]
+enqueue(7), queue is [9, 1, 7]
+enqueue(6), queue is [9, 1, 7, 6]
+dequeue(), queue is [1, 7, 6]
+dequeue(), queue is [7, 6]
+enqueue(4), queue is [7, 6, 4]
+dequeue(), queue is [6, 4]
+dequeue(), queue is [4]
+
+Q 8 :
+
+ans: a dequeue operation that fails doesn't remove anything from the queue, so there are essentially 10 dequeues here
+
+First one does not change the queue
+
+so 32-10 = 22 is the size of the queue
+
+Q9:
+
+Ans: the final value of fronts instance variable will be 5
+
+Question-10
+
+Ans nothing will be change
+
+explantion : the goal of the resize fuction is to copy the elements from old array to new array position wise the same for the loop will iterate through 0 to self.data and store it so both operations are same
+
+
+#Q11
+"""
+import collections
+
+class Queue():
+    def __init__(self):
+        self._data = collections.deque()
+        self._size = 0
+        
+        
+    def __len__(self):
+        return self._size
+    
+    def first(self):
+        return self._data[0]
+        
+    def enqueue(self, value):
+        self._size += 1
+        self._data.append(value)  
+        
+    def is_empty(self):
+        return self._size == 0
+    
+    def dequeue(self):
+        if self.is_empty():
+            raise ValueError('Queue is empty')
+        else:
+            ans = self._data.popleft()
+            self._size -= 1
+            return ans
+        
+        
+dq = Queue()
+
+for i in range(10):
+    dq.enqueue(i)
+
+    
+print('First', dq.first(), 'Length', len(dq))
+while not dq.is_empty():
+    print( dq.dequeue(),  end = ', ')
+    """
+    
+    Q12 :
+    """
+
+Return   Values in the Stack
+-        [4]
+-        [4, 8]
+-        [4, 8, 9]
+-        [5, 4, 8, 9]
+9        [5, 4, 8, 9] (the back operation - I'm assuming they meant last() based on their implementation)
+5        [4, 8, 9]
+9        [4,8]
+-        [4,8,7]
+4        [4,8,7]
+7        [4,8,7]
+-        [4,8,7,6]
+4        [8,7,6]
+8        [7,6]
+
+Q 13 
+
+"""
+from collections import deque
+ D = deque([i for i in range(1,9)])
+ Q = ArrayQueue()
+ for i in range(len(D)):
+ 	print(D[i])
+ n = len(D)
+ for i in range(n):
+ 	Q.enqueue(D.popleft())
+ set_trace()
+
+ for i in range(n):
+ 	D.append(Q.dequeue())
+ for i in range(n):
+ 	print(D[i])
+  """
+  Q 14 :
+  import collections
+
+S = Stack()
+D = collections.deque()
+
+for i in range(1,9,1):
+    D.append(i)
+    
+
+    
+def rearrange_using_stack(D, S):
+    for _ in range(4):
+        S.push(D.popleft())    
+        
+    D.append(S.pop())         
+    
+    S.push(D.popleft())        
+    
+    S.push(D.pop())            
+    
+    for _ in range(5):
+        D.appendleft(S.pop())  
+    
+    
+    
+    
+    
+rearrange_using_stack(D, S) 
+    
+    
+print('Values of S')
+while not S.is_empty():
+    print(S.pop())
+    
+print('Values of D:')
+while len(D) != 0:
+    print(D.popleft())
+  
+  
+  
+  
