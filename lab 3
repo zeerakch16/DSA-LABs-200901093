@@ -1,0 +1,83 @@
+class node:
+  def __init__(self, data=None):
+    self.data = data
+    self.next = None
+  
+class linkedlist:
+  def __init__(self):
+    self.head = node()
+  
+  def append(self, data):
+    if self.head.data == None:
+      self.head.data = data
+    else:
+      n = node(data)
+      current = self.head
+      while current.next != None:
+        current = current.next
+      current.next = n
+
+  def add_first(self, data):
+    if self.head.data == None:
+      self.head.data = data
+    else:
+      n = node(data)
+      current = self.head
+      self.head = n
+      n.next = current
+  
+  def len(self):
+    counter = 0
+    if self.head != None:
+      counter = 1
+    current = self.head
+    while current.next != None:
+      counter = counter + 1
+      current = current.next
+    return counter
+
+  def insert(self, data, index):
+    if index < self.len():
+      current = self.head
+      for i in range(0, index-1):
+        current = current.next
+      n = node(data)
+      n.next = current.next
+      current.next = n    
+    else:
+      print("Index does not  exist")
+
+  def delete(self):
+    current = self.head
+    while current.next.next is not None:
+      current= current.next
+    current.next.data = None
+    current.next = None
+
+  def delete_first(self):
+    current = self.head
+    self.head = current.next
+    current.data = None
+    current.next = None
+
+  def display(self):
+    current = self.head
+    result = [current.data]
+    while current.next != None:
+      current = current.next
+      result.append(current.data)
+    return result
+
+if __name__ == "__main__":
+  my_list = linkedlist()
+  my_list.add_first(4)
+  my_list.append(7)
+  my_list.append(6)
+  my_list.append(9)
+  my_list.add_first(10)
+  my_list.add_first(11)
+  my_list.delete()
+  my_list.delete_first()
+  my_list.insert(9, 3)
+  my_list.insert(14, 3)
+  print(my_list.display())
