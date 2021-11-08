@@ -1,0 +1,63 @@
+task1 
+ class node:
+  def __init__(self, data=None):
+    self.data = data
+    self.next = None
+  
+class linkedlist:
+
+  def __init__(self):
+    self.head = node("President")
+    self.head.next = node()
+
+    
+  def append(self,data):
+    new_node = node(data)
+    curr = self.head
+    while curr.next!=None:
+      curr = curr.next
+    curr.next = new_node
+
+  def display(self):
+    curr = self.head.next
+    dis = []
+    while curr.next!= None:
+      curr = curr.next
+      dis.append(curr.data)
+    print(dis)
+    dis.reverse()
+    print("After reversing")
+    print(dis)
+  def delete(self):
+    curr = self.head
+    while (curr.next.next):
+      secondlast_node = curr.next
+      curr = curr.next
+    curr.next = None
+  def calculate(self):
+    curr = self.head
+    temp = -1
+    while curr.next!=None:
+      temp+=1
+      curr=curr.next
+    print(temp)
+my_list = linkedlist()
+my_list.append("President")
+
+number = int(input("number of players "))
+rfor i in range(number):
+    p = input("Enter player name ")
+    my_list.append(p)
+
+my_list.append("Secretary")  
+
+my_list.delete()
+
+my_list.calculate()
+
+my_list.display()
+
+
+
+
+task2 
