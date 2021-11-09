@@ -60,4 +60,94 @@ my_list.display()
 
 
 
-task2 
+#TASK 2
+class Node:
+  def _init_(self,data):
+    self.data=data
+    self.nextPtr=None
+    self.prev=None
+
+class DLList:
+  def _init_(self):
+    self.head=None
+    self.count=0
+
+  def insertHead(self, data):
+    newNode=Node(data)
+    if (self.head==None): 
+     self.head=newNode
+    else:
+      newNode.nextPtr=self.head
+      self.head.nextPtr=None
+      self.head.prev=newNode
+      self.head=newNode
+      self.head.prev=None
+
+  def deleteHead(self):
+    if self.head==None:
+      print("List is empty")
+    else:
+      self.head=self.head.nextPtr
+      self.head.prev=None
+
+  def insertTail(self,data):
+    newNode=Node(data)
+    cur=self.head
+    if (self.head==None): 
+     self.head=newNode
+    while (cur.nextPtr is not None):
+      cur=cur.nextPtr
+    cur.nextPtr=newNode
+    newNode.prev=cur
+    newNode.nextPtr=None
+
+  def deleteTail(self):
+    if self.head==None:
+      print("No Node Exists")
+    else:
+      cur=self.head
+      while (cur.nextPtr.nextPtr):
+       secondLastNode=cur.nextPtr
+       cur=cur.nextPtr
+      cur.nextPtr=None
+
+  
+  def display(self):
+     cur=self.head
+     dis=[]
+     while (cur.nextPtr): 
+       dis.append(cur.data) 
+       cur=cur.nextPtr 
+       self.count=self.count+1
+     dis.append(cur.data)  
+     self.count=self.count+1 
+     print(dis) 
+     print("Size of Linked List is ", self.count) 
+
+
+choice=0
+while (choice!=5):
+ print("Welcome. To alter Employee data, Select one of the following: ")
+ print("  0. Display Employee Data")
+ print("  1. Insert name at Head")
+ print("  2. Insert name at Tail")
+ print("  3. Remove name at Head")
+ print("  4. Remove name at Tail")
+ choice=int(input("  5. Exit: "))
+ EmployeeData=DLList()
+ if (choice==0):
+   EmployeeData.display()
+ if (choice==1):
+   data=input("Enter Employee Name: ")
+   EmployeeData.insertHead(data)
+ if (choice==2):
+   data=input("Enter Employee Name: ")
+   EmployeeData.insertTail(data)
+ if (choice==3):
+   EmployeeData.deleteHead()
+ if(choice==4):
+   EmployeeData.deleteTail().
+   
+   
+   
+   
